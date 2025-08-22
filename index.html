@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TRUEQUE.TRASLA — Cuidemos el medio ambiente</title>
+  <meta name="description" content="TRUEQUE.TRASLA: una comunidad para cuidar el medio ambiente donando, recibiendo y cambiando cosas que ya no usás." />
+  
+  <!-- ✅ Fuente moderna desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+
+  <!-- ✅ Estilos CSS -->
+  <style>
+    /* Fuente global */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Botón */
+    .button,
+    button {
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 1rem;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0.8rem 1.2rem;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      transition: background-color 0.3s;
+      text-decoration: none;
+    }
+
+    .button:hover,
+    button:hover {
+      background-color: #388e3c;
+    }
+
+    /* Formularios */
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      margin: 2rem auto;
+    }
+
+    label {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="localidad"] {
+      padding: 0.8rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Pie de página */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #2e7d32;
+      color: white;
+      margin-top: 3rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background-color: #d0f0c0;
+      border-bottom: 2px solid #a5d6a7;
+    }
+
+    .section {
+      margin: 2rem auto;
+      max-width: 800px;
+      padding: 1rem;
+    }
+
+    ul, ol {
+      margin-left: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      form {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER / HERO -->
+  <header class="hero">
+    <h1>TRUEQUE.TRASLA</h1>
+    <h2>Cuidemos el medio ambiente entre todos</h2>
+    <p>
+      <strong>TRUEQUE.TRASLA</strong> es un espacio pensado para dar una segunda vida a los objetos.
+      Si tenés algo que ya no usás y pensás tirarlo, acá podés publicarlo y cambiarlo
+      por otras cosas que realmente necesitás. De esta forma reducimos residuos,
+      ayudamos al planeta y colaboramos con la comunidad.
+    </p>
+    <img src="images/image.png" alt="Logotipo de TRUEQUE.TRASLA" width="200" height="200">
+  </header>
+
+  <!-- BENEFICIOS -->
+  <section class="section">
+    <h2>Beneficios principales</h2>
+    <ul>
+      <li>Reducimos la basura y cuidamos el medio ambiente</li>
+      <li>Podés donar o recibir lo que necesites</li>
+      <li>Promovemos la reutilización de objetos</li>
+      <li>Fomentamos la solidaridad y el intercambio justo</li>
+      <li>Construimos una comunidad más consciente</li>
+    </ul>
+
+    <h2>Etapas de participación</h2>
+    <ol>
+      <li>Publicar los objetos que quieras donar o intercambiar</li>
+      <li>Explorar lo que otras personas ofrecen</li>
+      <li>Contactar y coordinar el trueque</li>
+      <li>Realizar el intercambio de manera simple y segura</li>
+      <li>Disfrutar de darle un nuevo uso a los objetos</li>
+    </ol>
+
+    <h3>¿Cómo funciona?</h3>
+    <ul>
+      <li>1. Subí lo que ya no usás (ropa, libros, tecnología, etc.).</li>
+      <li>2. Indicá qué necesitás.</li>
+      <li>3. La plataforma encuentra coincidencias cerca tuyo.</li>
+      <li>4. Coordinás el intercambio con otra persona.</li>
+    </ul>
+  </section>
+
+  <!-- SECCIONES -->
+  <section class="section" id="ofrecer">
+    <h2>Ofrecé o Buscá</h2>
+    <p>¡Subí tus objetos o descubrí qué podés conseguir! Desde ropa a herramientas, todo sirve.</p>
+    <a href="marketplace/index.html" class="button">Explorar objetos</a>
+  </section>
+
+  <section class="section" id="impacto">
+    <h2>Tu impacto cuenta</h2>
+    <p>Cada trueque evita basura, reduce consumo y promueve la economía circular.</p>
+    <p><strong>+14.000 kg</strong> de residuos evitados en el último año gracias a los usuarios.</p>
+  </section>
+
+  <section class="section" id="registro">
+    <h2>Registrate gratis</h2>
+    <p>Unite a la comunidad de intercambios sostenibles.</p>
+    <form>
+      <label for="nombre">Nombre:</label>
+      <input type="text" name="nombre" id="nombre" placeholder="Tu nombre">
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" name="email" id="email" placeholder="tucorreo@ejemplo.com">
+
+      <label for="password">Contraseña:</label>
+      <input type="password" name="password" id="password" placeholder="Contraseña segura">
+
+      <label for="Localidad">Localidad:</label>
+      <input type="localidad" name="localidad" id="localidad" placeholder="Ej.: Mina Clavero ">
+
+      <button type="submit">Crear cuenta</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 TRUEQUE.TRASLA — Cuidemos el planeta con cada intercambio.</p>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector("form");
+      const inputs = form.querySelectorAll("input");
+
+      form.addEventListener("submit", function (e) {
+        const nombre = form.querySelector("input[name='nombre']").value.trim();
+        const email = form.querySelector("input[name='email']").value.trim();
+        const password = form.querySelector("input[name='password']").value;
+        const localidad = form.querySelector("input[name='localidad']").value;
+
+        if (!nombre || !email || !password) {
+          e.preventDefault();
+          alert("Por favor completá todos los campos.");
+          return;
+        }
+
+        alert(`¡Gracias por registrarte, ${nombre}!`);
+      });
+
+      inputs.forEach(input => {
+        input.addEventListener("focus", () => {
+          input.style.borderColor = "#4caf50";
+        });
+        input.addEventListener("blur", () => {
+          input.style.borderColor = "#ccc";
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

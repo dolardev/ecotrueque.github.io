@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TRUEQUE.TRASLA — Marketplace</title>
+  <meta name="description" content="Explorá objetos para donar, recibir o intercambiar en TRUEQUE.TRASLA." />
+
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --brand: #4caf50;
+      --brand-dark: #388e3c;
+      --brand-soft: #d0f0c0;
+      --text: #333;
+      --muted: #5f6b5f;
+      --bg: #f7faf7;
+      --card: #ffffff;
+      --border: #e5efe5;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: var(--brand-soft);
+      border-bottom: 2px solid #a5d6a7;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+
+    .brand {
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .brand img { width: 44px; height: 44px; object-fit: contain; border-radius: 8px; }
+    .brand h1 { margin: 0; font-size: 1.3rem; letter-spacing: .5px; }
+
+    nav a {
+      text-decoration: none; color: white; background: var(--brand);
+      padding: .6rem .9rem; border-radius: 7px; font-size: .95rem;
+      transition: background .2s ease;
+    }
+    nav a:hover { background: var(--brand-dark); }
+
+    .header-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+    /* Filters */
+    .filters {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1rem; border-radius: 12px; margin: 1rem 0 1.2rem;
+      display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr .6fr; gap: .8rem;
+    }
+    .filters input, .filters select {
+      width: 100%; padding: .7rem .8rem; border: 1px solid #cbd5cb; border-radius: 8px;
+      font-size: .95rem; outline: none; transition: border-color .2s;
+      background: #fff;
+    }
+    .filters input:focus, .filters select:focus { border-color: var(--brand); }
+    .filters .reset { background: transparent; border: 1px solid var(--border); }
+
+    .button {
+      border-radius: 8px; display: inline-block; cursor: pointer; font-size: 1rem;
+      padding: .8rem 1rem; background: var(--brand); color: #fff; border: none;
+      transition: background .2s; text-align: center; text-decoration: none;
+    }
+    .button:hover { background: var(--brand-dark); }
+
+    /* Grid */
+    .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+      display: flex; flex-direction: column; transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.06); }
+
+    .thumb { position: relative; width: 100%; padding-top: 65%; background: #eef6ee; overflow: hidden; }
+    .thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .badge {
+      position: absolute; top: .6rem; left: .6rem; background: rgba(76, 175, 80, .9); color: #fff; font-size: .8rem;
+      padding: .25rem .5rem; border-radius: 6px; backdrop-filter: blur(2px);
+    }
+
+    .content { padding: .9rem .9rem 1rem; display: flex; flex-direction: column; gap: .5rem; }
+    .title { font-weight: 700; margin: 0; font-size: 1.05rem; }
+    .meta { font-size: .9rem; color: var(--muted); display: flex; gap: .6rem; flex-wrap: wrap; }
+    .tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+    .tag { font-size: .78rem; background: #eef6ee; color: #2e7d32; padding: .25rem .5rem; border-radius: 999px; border: 1px solid #cfe7cf; }
+
+    .actions { display: flex; gap: .5rem; align-items: center; margin-top: .3rem; }
+    .ghost { background: #fff; color: var(--brand); border: 1px solid var(--brand); }
+
+    /* Empty state */
+    .empty { text-align: center; padding: 2rem; color: var(--muted); display: none; }
+
+    /* Footer */
+    footer { text-align: center; padding: 1.2rem; background: #2e7d32; color: #fff; margin-top: 2rem; }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .filters { grid-template-columns: 1fr 1fr 1fr; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .filters { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      nav a { padding: .55rem .8rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-row">
+      <div class="brand">
+        <img src="image.png" alt="TRUEQUE.TRASLA" />
+        <h1>TRUEQUE.TRASLA — Marketplace</h1>
+      </div>
+      <nav>
+        <a href="inicio/index.html">← Volver al inicio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Filters -->
+    <section class="filters" aria-label="Filtros de búsqueda">
+      <input id="q" type="search" placeholder="Buscar por nombre o descripción…" aria-label="Buscar" />
+      <select id="categoria" aria-label="Categoría">
+        <option value="">Todas las categorías</option>
+        <option>Electrónica</option>
+        <option>Hogar</option>
+        <option>Libros</option>
+        <option>Deportes</option>
+        <option>Ropa</option>
+        <option>Niñez</option>
+        <option>Herramientas</option>
+      </select>
+      <select id="estado" aria-label="Estado">
+        <option value="">Cualquier estado</option>
+        <option>Nuevo</option>
+        <option>Muy bueno</option>
+        <option>Usado</option>
+        <option>Para repuesto</option>
+      </select>
+      <input id="localidad" type="text" placeholder="Filtrar por localidad (ej. Mina Clavero)" aria-label="Localidad" />
+      <button id="reset" class="button reset" type="button">Limpiar</button>
+    </section>
+
+    <!-- Grid -->
+    <section aria-live="polite">
+      <div id="grid" class="grid"></div>
+      <div id="empty" class="empty">No hay resultados con esos filtros. Probá cambiarlos o limpiar la búsqueda.</div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 TRUEQUE.TRASLA — Cuidemos el planeta con cada intercambio.</p>
+  </footer>
+
+  <script>
+    // Datos de ejemplo (podés conectar a tu backend luego)
+    const items = [
+      {
+        id: 1,
+        titulo: 'Bicicleta urbana rodado 26',
+        categoria: 'Deportes',
+        estado: 'Usado',
+        localidad: 'Mina Clavero',
+        quiere: ['Scooter', 'Bonites'],
+        descripcion: 'Funciona perfecto, frenos a ajustar. Ideal para ciudad.',
+        img: 'bici.jpg',
+        destacado: true
+      },
+      {
+        id: 2,
+        titulo: 'Licuadora de vidrio 600W',
+        categoria: 'Hogar',
+        estado: 'Muy bueno',
+        localidad: 'Nono',
+        quiere: ['frascos de vidrio', 'libros'],
+        descripcion: 'Poco uso, jarra de 1.5L. Incluye dos cuchillas.',
+        img: 'licuadora.jpg'
+      },
+      {
+        id: 3,
+        titulo: 'Chaqueta impermeable talle M',
+        categoria: 'Ropa',
+        estado: 'Muy bueno',
+        localidad: 'Villa Cura Brochero',
+        quiere: ['zapatillas 38', 'termo'],
+        descripcion: 'Casi nueva, respirable. Unisex.',
+        img: 'chaqueta de cuero.jpg'
+      },
+      {
+        id: 4,
+        titulo: 'Taladro percutor con brocas',
+        categoria: 'Herramientas',
+        estado: 'Usado',
+        localidad: 'Mina Clavero',
+        quiere: ['pintura látex', 'nivel'],
+        descripcion: 'Incluye maletín y juego de brocas. 700W.',
+        img: 'talado.jpg',
+        destacado: true
+      },
+      {
+        id: 5,
+        titulo: 'Colección de novelas históricas',
+        categoria: 'Libros',
+        estado: 'Usado',
+        localidad: 'Los Hornillos',
+        quiere: ['plantines', 'semillas'],
+        descripcion: '10 títulos en buen estado. Se pueden separar.',
+        img: 'novelas.jpg'
+      },
+      {
+        id: 6,
+        titulo: 'Tablet 10" con funda',
+        categoria: 'Electrónica',
+        estado: 'Muy bueno',
+        localidad: 'San Javier',
+        quiere: ['auriculares', 'parlante bluetooth'],
+        descripcion: 'Batería rinde bien. Ideal para leer y series.',
+        img: 'tablet.jpg'
+      },
+      {
+        id: 7,
+        titulo: 'Cuna desmontable',
+        categoria: 'Niñez',
+        estado: 'Usado',
+        localidad: 'Mina Clavero',
+        quiere: ['ropa de cama', 'pañales tela'],
+        descripcion: 'Fácil de armar, incluye colchón.',
+        img: 'cuna.jpg'
+      },
+      {
+        id: 8,
+        titulo: 'Lámpara de pie vintage',
+        categoria: 'Hogar',
+        estado: 'Usado',
+        localidad: 'Nono',
+        quiere: ['planta interior', 'maceta grande'],
+        descripcion: 'Funciona, cableado revisado. Muy estética.',
+        img: 'lampara.webp'
+      },
+      {
+        id: 9,
+        titulo: 'Remera algodón orgánico L',
+        categoria: 'Ropa',
+        estado: 'Nuevo',
+        localidad: 'Villa Dolores',
+        quiere: ['libro de fotografía'],
+        descripcion: 'Etiqueta puesta, color verde bosque.',
+        img: 'remera.png'
+      }
+    ];
+
+    const grid = document.getElementById('grid');
+    const empty = document.getElementById('empty');
+
+    const q = document.getElementById('q');
+    const categoria = document.getElementById('categoria');
+    const estado = document.getElementById('estado');
+    const localidad = document.getElementById('localidad');
+    const reset = document.getElementById('reset');
+
+    function cardTemplate(item){
+      return `
+        <article class="card" data-id="${item.id}">
+          <div class="thumb">
+            <img src="${item.img}" alt="${item.titulo}" loading="lazy" />
+            ${item.destacado ? '<span class="badge">Destacado</span>' : ''}
+          </div>
+          <div class="content">
+            <h3 class="title">${item.titulo}</h3>
+            <div class="meta">
+              <span>📍 ${item.localidad}</span>
+              <span>•</span>
+              <span>${item.categoria}</span>
+              <span>•</span>
+              <span>${item.estado}</span>
+            </div>
+            <p style="margin:.2rem 0 .4rem;">${item.descripcion}</p>
+            <div class="tags" aria-label="Busca/Quiere">
+              ${item.quiere.map(t=>`<span class="tag">Quiere: ${t}</span>`).join('')}
+            </div>
+            <div class="actions">
+              <button class="button">Proponer trueque</button>
+              <button class="button ghost" onclick="alert('Guardado en favoritos')">❤ Favorito</button>
+            </div>
+          </div>
+        </article>`
+    }
+
+    function render(list){
+      grid.innerHTML = list.map(cardTemplate).join('');
+      empty.style.display = list.length ? 'none' : 'block';
+    }
+
+    function normalize(str){
+      return (str||'').toString().toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,'');
+    }
+
+    function applyFilters(){
+      const nq = normalize(q.value);
+      const cat = categoria.value;
+      const est = estado.value;
+      const loc = normalize(localidad.value);
+
+      const filtered = items.filter(it => {
+        const text = normalize(it.titulo + ' ' + it.descripcion + ' ' + it.quiere.join(' '));
+        const matchQ = !nq || text.includes(nq);
+        const matchCat = !cat || it.categoria === cat;
+        const matchEst = !est || it.estado === est;
+        const matchLoc = !loc || normalize(it.localidad).includes(loc);
+        return matchQ && matchCat && matchEst && matchLoc;
+      });
+
+      render(filtered);
+    }
+
+    // Init
+    render(items);
+
+    // Events
+    [q, categoria, estado, localidad].forEach(el => el.addEventListener('input', applyFilters));
+    reset.addEventListener('click', () => {
+      q.value = '';
+      categoria.value = '';
+      estado.value = '';
+      localidad.value = '';
+      render(items);
+    });
+  </script>
+</body>
+</html>
